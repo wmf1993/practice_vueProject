@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+a:link {
+  color: #000000;
+}
+a:visited {
+  color: #000000;
+}
+a:active {
+  color: #000000;
+}
+a:hover {
+  color: #26a2ff;
+}
+.news-content img {
+  width: 100%;
+}
