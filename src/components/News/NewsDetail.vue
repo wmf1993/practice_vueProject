@@ -1,5 +1,5 @@
 <template>
-  <div class="tmp1">
+  <div>
     <nav-bar title="新闻详情"></nav-bar>
     <div class="news-title">
       <p>{{ newsDetail.title }}</p>

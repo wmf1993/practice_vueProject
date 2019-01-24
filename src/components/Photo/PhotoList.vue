@@ -1,5 +1,5 @@
 <template>
-  <div class="tmp1">
+  <div>
     <nav-bar title="图文列表"></nav-bar>
 
     <div class="photo-header">
@@ -13,14 +13,14 @@
     <div class="photo-list">
       <ul>
         <li v-for="img in imgs" :key="img.id">
-          <a>
+          <router-link :to="{name:'photo.detail',query: {id:img.id}}">
             <img :src="img.img_url" v-lazy="img">
             <p>
               <span>{{ img.title }}</span>
               <br>
               <span>{{ img.zhaiyao }} </span>
             </p>
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -47,6 +47,7 @@ export default {
           id: 0,
           title: '全部'
         })
+        this.loadImgById(0)
       })
       .catch(err => console.log('分类信息获取失败', err))
   },

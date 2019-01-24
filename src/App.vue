@@ -1,7 +1,7 @@
 <template>
   <div>
     <mt-header title="信息管理系统" fixed></mt-header>
-    <router-view></router-view>
+    <router-view class='template'></router-view>
     <mt-tabbar v-model="selected" fixed>
       <mt-tab-item id="home">
         <img @click="changeHash" slot="icon" src="./assets/img/index.png">

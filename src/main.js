@@ -8,6 +8,9 @@ import Axios from 'axios'
 
 import MintUI from 'mint-ui'
 
+// 图片预览插件
+import VuePreview from 'vue-preview'
+
 import 'mint-ui/lib/style.css'
 
 // 引入自己的CSS
@@ -38,6 +41,8 @@ Axios.defaults.baseURL = 'http://www.sinya.online/api/'
 Vue.prototype.$axios = Axios
 
 Vue.use(MintUI)
+
+Vue.use(VuePreview) // 内部运行：Vue.component('vue-preview',componentObj)
 
 Vue.config.productionTip = false
 

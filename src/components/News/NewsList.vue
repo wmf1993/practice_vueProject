@@ -1,5 +1,5 @@
 <template>
-  <div class="tmp1">
+  <div>
     <nav-bar title="新闻列表"></nav-bar>
     <div class="demo">
       <ul>
