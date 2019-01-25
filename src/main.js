@@ -19,21 +19,29 @@ import './assets/css/global.css'
 // 引入图标的CSS
 import './assets/icomoon/style.css'
 
+import NavBar from '@/components/Common/NavBar'
 // 引入自己的ul和li组件
 import MyUl from '@/components/common/MyUl'
 import MyLi from '@/components/common/MyLi'
+// 引入自己的评论组件
+import Comment from '@/components/common/Comment'
 
 // 定义moment全局日期过滤器
 import Moment from 'moment'
-
-import NavBar from '@/components/Common/NavBar'
+// 设置中文显示
+Moment.locale('zh-cn')
 
 Vue.component(MyUl.name, MyUl)
 Vue.component(MyLi.name, MyLi)
 Vue.component(NavBar.name, NavBar)
+Vue.component(Comment.name, Comment)
 
 Vue.filter('convertTime', function (data, formatStr) {
   return Moment(data).format(formatStr)
+})
+// 相对时间
+Vue.filter('relativeTime', function (previousTime) {
+  return Moment(previousTime).fromNow()
 })
 
 // 配置公共URL

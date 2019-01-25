@@ -16,6 +16,9 @@
     <div class="photo-desc">
       <p v-html="info.content"></p>
     </div>
+
+    <!-- 使用评论组件 -->
+    <comment :cid="$route.query.id" />
   </div>
 </template>
 
