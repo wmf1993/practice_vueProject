@@ -48,6 +48,20 @@ Vue.filter('relativeTime', function (previousTime) {
 Axios.defaults.baseURL = 'http://www.sinya.online/api/'
 Vue.prototype.$axios = Axios
 
+// 配置请求拦截器，显示loading图标
+Axios.interceptors.request.use(function (config) {
+  MintUI.Indicator.open({
+    text: '玩命加载中...'
+  })
+  return config
+})
+// 配置响应拦截器，关闭loading图标
+Axios.interceptors.response.use(function (response) {
+  // response.config 类似上面的 config
+  MintUI.Indicator.close()
+  return response
+})
+
 Vue.use(MintUI)
 
 Vue.use(VuePreview) // 内部运行：Vue.component('vue-preview',componentObj)

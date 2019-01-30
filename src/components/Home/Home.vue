@@ -2,7 +2,7 @@
   <div>
     <mt-swipe :auto="4000">
       <mt-swipe-item v-for="img in imgs" :key="img.id">
-        <img :src="img.img" />
+        <img :src="img.imgSrc" />
       </mt-swipe-item>
     </mt-swipe>
 
@@ -27,13 +27,13 @@ export default {
     return {
       msg: 'Welcom to your Vue.js App',
       imgs: [
-        {'id': 'swipe_1', 'url': '', 'img': require('../../assets/img/swipe_1.jpg')},
-        {'id': 'swipe_2', 'url': '', 'img': require('../../assets/img/swipe_2.jpg')}
+        {'id': 'swipe_1', 'url': '', 'imgSrc': require('../../assets/img/swipe_1.jpg')},
+        {'id': 'swipe_2', 'url': '', 'imgSrc': require('../../assets/img/swipe_2.jpg')}
       ],
       grids: [
         {picURL: require('../../assets/img/homePic/message.png'), title: '新闻资讯', router: {name: 'news.list'}},
         {picURL: require('../../assets/img/homePic/share.png'), title: '图文分享', router: {name: 'photo.list', params: {categoryId: 0}}},
-        {picURL: require('../../assets/img/homePic/show.png'), title: '商品展示', router: {name: 'news.list'}},
+        {picURL: require('../../assets/img/homePic/show.png'), title: '商品展示', router: {name: 'goods.list', query: {id: 1}}},
         {picURL: require('../../assets/img/homePic/guestbook.png'), title: '留言反馈', router: {name: 'news.list'}},
         {picURL: require('../../assets/img/homePic/search.png'), title: '搜索资讯', router: {name: 'news.list'}},
         {picURL: require('../../assets/img/homePic/connect.png'), title: '联系我们', router: {name: 'news.list'}}

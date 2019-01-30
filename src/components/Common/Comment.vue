@@ -10,10 +10,10 @@
           </div>
         </li>
         <li class="text-comment">
-          <textarea></textarea>
+          <textarea v-model="newComment"></textarea>
         </li>
         <li>
-          <mt-button type="primary" size="large">
+          <mt-button type="primary" size="large" @click="sendComment">
             发表评论
           </mt-button>
         </li>
@@ -45,8 +45,9 @@ export default {
   props: ['cid'],
   data () {
     return {
-      msgs: [],
-      page: 1
+      msgs: [], // 消息数据
+      page: 1, // 组件内控制页码
+      newComment: '' // 新的消息
     }
   },
   created () {
@@ -81,6 +82,19 @@ export default {
           this.page++
         })
         .catch(err => console.log('评论获取失败', err))
+    },
+    sendComment () {
+      // 发表前判断是否为空
+      if (this.newComment.trim() === '') {
+        return this.$toast('评论信息不能为空')
+      }
+      // 获取评论信息 this.newComment
+      this.$axios.post('postcomment/' + this.cid, 'content=' + this.newComment)
+        .then(res => {
+          this.newComment = ''
+          this.page = 1
+          this.loadMore()
+        })
     }
   }
 }
