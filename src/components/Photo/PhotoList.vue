@@ -14,7 +14,7 @@
       <ul>
         <li v-for="img in imgs" :key="img.id">
           <router-link :to="{name:'photo.detail',query: {id:img.id}}">
-            <img :src="img.img_url" v-lazy="img">
+            <img :src="img.img_url" />
             <p>
               <span>{{ img.title }}</span>
               <br>
@@ -118,24 +118,26 @@ export default {
 .photo-header a {
   color: #26a2ff;
 }
-.phopo-list {
+.photo-list li {
+  width: 375px;
+  height: 375px;
+  margin-top: 5px;
 }
 ul {
   padding: 0;
 }
-a {
+.photo-list a {
   width: 375px;
-  height: 250px;
+  height: 375px;
 }
 img {
   width: 375px;
-  height: 250px;
   position: absolute;
   z-index: -1;
 }
 a p {
   width: 375px;
-  height: 250px;
+  height: 375px;
   display: table-cell;
   vertical-align: bottom;
 }

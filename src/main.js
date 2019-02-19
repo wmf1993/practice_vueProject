@@ -43,9 +43,14 @@ Vue.filter('convertTime', function (data, formatStr) {
 Vue.filter('relativeTime', function (previousTime) {
   return Moment(previousTime).fromNow()
 })
+// 处理文字过长的过滤器
+Vue.filter('convertStr', function (str, count) {
+  return str.substring(0, count) + '...'
+})
 
 // 配置公共URL
-Axios.defaults.baseURL = 'http://www.sinya.online/api/'
+// Axios.defaults.baseURL = 'http://www.sinya.online/api/'
+Axios.defaults.baseURL = 'http://127.0.0.1:8899/api/'
 Vue.prototype.$axios = Axios
 
 // 配置请求拦截器，显示loading图标

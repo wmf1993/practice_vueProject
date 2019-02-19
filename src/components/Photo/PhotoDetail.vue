@@ -41,7 +41,7 @@ export default {
       .catch(err => console.log('图文详情获取失败！', err))
 
     // 获取缩略图
-    this.$axios.get('getthumimage/' + id)
+    this.$axios.get('getthumimages/' + id)
       .then(res => {
         this.imgs = res.data.message
 
