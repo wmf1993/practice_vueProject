@@ -5,20 +5,22 @@
       <mt-loadmore :auto-fill="false" :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" @top-status-change="handleTopChange" @bottom-status-change="handleBottomChange" ref="loadmore">
         <ul>
           <li v-for="goods in goodsList" :key="goods.id">
-            <a>
-              <img :src="goods.img_url" />
-              <div class="title">{{ goods.title | convertStr(20) }}</div>
-              <div class="description">
-                <div class="sell">
-                  <span>￥{{goods.sell_price}}</span>
-                  <span>￥{{goods.market_price}}</span>
+            <router-link :to="{name:'photo.detail',query:{id:goods.id}}">
+              <a>
+                <img :src="goods.img_url" />
+                <div class="title">{{ goods.title | convertStr(20) }}</div>
+                <div class="description">
+                  <div class="sell">
+                    <span>￥{{goods.sell_price}}</span>
+                    <span>￥{{goods.market_price}}</span>
+                  </div>
+                  <div class="detail">
+                    <div class="hot"></div>
+                    <div class="count">剩{{goods.stock_quantity}}件</div>
+                  </div>
                 </div>
-                <div class="detail">
-                  <div class="hot"></div>
-                  <div class="count">剩{{goods.stock_quantity}}件</div>
-                </div>
-              </div>
-            </a>
+              </a>
+            </router-link>
           </li>
         </ul>
         <div slot="top" class="mint-loadmore-top">
@@ -60,10 +62,11 @@ export default {
         .then(res => {
           // 判断是否还有数据（通过数组是否为空）
           if (res.data.message.length === 0) {
+            this.$toast('没有更多数据了')
             this.allLoaded = true
           }
           this.goodsList = this.goodsList.concat(res.data.message)
-          this.$refs.loadmore.onBottomLoaded()
+          this.$refs.loadmore.onBottomLoaded() // 通知元素重新定位
           this.page++
         })
         .catch(err => console.log(err, '商品列表获取失败'))

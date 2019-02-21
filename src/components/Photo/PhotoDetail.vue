@@ -7,16 +7,15 @@
       <span>{{info.click}}次浏览</span>
       <span>分类：民生经济</span>
     </div>
-    <ul>
-      <vue-preview :slides="imgs"></vue-preview>
-<!--       <li v-for="(img, index) in imgs" :key="index">
+<!--     <ul>
+      <li v-for="(img, index) in imgs" :key="index">
         <img :src="img.src" />
       </li>
- -->    </ul>
+    </ul> -->
+    <vue-preview :slides="imgs"></vue-preview>
     <div class="photo-desc">
       <p v-html="info.content"></p>
     </div>
-
     <!-- 使用评论组件 -->
     <comment :cid="$route.query.id" />
   </div>

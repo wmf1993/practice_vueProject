@@ -60,7 +60,7 @@ export default {
       this.$axios.get(`getcomments/${this.cid}?pageindex=${this.page}`)
         .then(res => {
           if (res.data.message.length === 0) {
-            this.$toast('没有数据了')
+            // this.$toast('没有数据了')
           }
           this.msgs = res.data.message
           this.page++

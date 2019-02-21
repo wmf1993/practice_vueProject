@@ -23,3 +23,19 @@ a:hover {
 .template {
   margin-bottom: 55px;
 }
+/*vue-preview样式*/
+.my-gallery {
+  width: 100%;
+  height: 250px;
+}
+.my-gallery img {
+  display: block;
+  height: 123px;
+  width: 123px;
+}
+figure {
+  width: 33.33%;
+  margin: 0;
+  padding: 0;
+  float: left;
+}

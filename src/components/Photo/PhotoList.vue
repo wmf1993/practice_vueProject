@@ -130,6 +130,9 @@ ul {
   width: 375px;
   height: 375px;
 }
+.photo-list span {
+  color: #ffffff;
+}
 img {
   width: 375px;
   position: absolute;
