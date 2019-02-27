@@ -5,7 +5,7 @@
       <mt-loadmore :auto-fill="false" :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" @top-status-change="handleTopChange" @bottom-status-change="handleBottomChange" ref="loadmore">
         <ul>
           <li v-for="goods in goodsList" :key="goods.id">
-            <router-link :to="{name:'photo.detail',query:{id:goods.id}}">
+            <router-link :to="{name:'goods.detail',query:{id:goods.id}}">
               <a>
                 <img :src="goods.img_url" />
                 <div class="title">{{ goods.title | convertStr(20) }}</div>
@@ -92,6 +92,8 @@ export default {
 
 <style scoped>
 .demo {
+  height: 508px;
+  overflow: auto;
   padding-top: 100px;
 }
 .demo ul {
