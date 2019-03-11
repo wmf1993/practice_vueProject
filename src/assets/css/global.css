@@ -22,6 +22,8 @@ a:hover {
 }
 .template {
   margin-bottom: 55px;
+  width: auto;
+  overflow-y: auto;
 }
 /*vue-preview样式*/
 .my-gallery {

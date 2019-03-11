@@ -94,7 +94,7 @@ export default {
 .demo {
   height: 508px;
   overflow: auto;
-  padding-top: 100px;
+  padding-top: 90px;
 }
 .demo ul {
   display: block;

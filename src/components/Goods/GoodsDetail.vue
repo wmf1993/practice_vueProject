@@ -15,28 +15,28 @@
         <div class="product-desc">
           <ul>
             <li>
-              <span class="product-desc-span">商品标题</span>
+              <span class="product-desc-span">{{ goodsInfo.title }}</span>
             </li>
             <li class="price-li">
-              市场价: <s>￥9999</s>
-              销售价: <span>￥233</span>
+              市场价: <s>{{ goodsInfo.market_price }}</s>
+              销售价: <span>{{ goodsInfo.sell_price }}</span>
             </li>
             <li class="number-li">
               购买数量: <span>-</span><span>1</span><span>+</span>
             </li>
             <li>
               <mt-button type="primary">立即购买</mt-button>
-              <mt-button type="danger">加入购物车</mt-button>
+              <mt-button type="danger" @click="insertBall">加入购物车</mt-button>
             </li>
           </ul>
         </div>
-        <div class="ball"></div>
+        <div class="ball" v-if="isExist"></div>
         <div class="product-props">
           <ul>
             <li>商品参数</li>
-            <li>商品货号: 1233</li>
-            <li>库存情况: 33件</li>
-            <li>上架时间: 2033-11-22</li>
+            <li>商品货号: {{ goodsInfo.goods_no }}</li>
+            <li>库存情况: {{ goodsInfo.stock_quantity }}件</li>
+            <li>上架时间: {{ goodsInfo.add_time | convertTime('YYYY-MM-DD') }}</li>
           </ul>
         </div>
         <div class="product-info">
@@ -54,20 +54,26 @@
 export default {
   data () {
     return {
-      goodsDetail: [],
-      imgs: []
+      goodsInfo: [],
+      imgs: [],
+      isExist: false
+    }
+  },
+  methods: {
+    insertBall () {
+      this.isExist = true
     }
   },
   created () {
     let id = this.$route.query.id
-    this.$axios.get('goods/getdesc/' + id)
-      .then(res => {
-        this.goodsDetail = res.data.message
-      })
-      .catch(err => console.log(err))
     this.$axios.get('/getthumimages/' + id)
       .then(res => {
         this.imgs = res.data.message
+      })
+      .catch(err => console.log(err))
+    this.$axios.get('goods/getinfo/' + id)
+      .then(res => {
+        this.goodsInfo = res.data.message[0]
       })
       .catch(err => console.log(err))
   }
@@ -76,10 +82,10 @@ export default {
 
 <style scoped>
 .demo {
-  padding-top: 102px;
+  padding-top: 90px;
 }
 .mint-swipe {
-  height: 200px;
+  height: 300px;
   text-align: center;
 }
 .mint-swipe img {
@@ -214,7 +220,8 @@ export default {
     width: 24px;
     height: 24px;
     position: absolute;
-    top: 440px;
+    /*top: 440px;*/
+    top: 555px;
     left: 120px;
     display: inline-block;
     z-index: 9999;

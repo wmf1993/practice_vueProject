@@ -39,7 +39,7 @@ export default {
 
 <style scoped>
 .demo {
-  padding-top: 100px;
+  padding-top: 90px;
 }
 .demo ul {
   display: block;

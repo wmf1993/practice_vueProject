@@ -27,8 +27,9 @@ export default {
   z-index: 999;
 }
 h1 {
-  height: 42px;
+  height: 30px;
   margin: 10px 0;
+  font-size: 24px;
 }
 h1:first-child {
   float: left;

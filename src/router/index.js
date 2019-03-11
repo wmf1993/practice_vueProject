@@ -79,7 +79,7 @@ export default new Router({
     // 商品详情
     {
       name: 'goods.detail',
-      path: 'goods/detail',
+      path: '/goods/detail',
       component: GoodsDetail
     }
   ]

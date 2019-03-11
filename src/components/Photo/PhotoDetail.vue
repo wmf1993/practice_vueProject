@@ -66,7 +66,7 @@ ul {
   padding: 0;
 }
 .photo-title {
-  margin-top: 100px;
+  margin-top: 90px;
   overflow: hidden;
 }
 .photo-title, .photo-desc {

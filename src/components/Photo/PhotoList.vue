@@ -98,9 +98,10 @@ export default {
 
 <style scoped>
 .photo-header {
-  padding-top: 100px;
+  padding-top: 90px;
   overflow: hidden;
   height: 21px;
+  margin-top: 4px;
 }
 .photo-header ul {
   overflow-y: hidden;
@@ -109,7 +110,7 @@ export default {
   height: 30px;
   width: 100%;
   white-space: nowrap;
-  margin-top: 0;
+  margin-top: 0px;
 }
 .photo-header li {
   margin: 0 10px;

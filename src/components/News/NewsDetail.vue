@@ -33,7 +33,7 @@ export default {
 
 <style scoped>
 .news-title {
-  padding-top: 100px;
+  padding-top: 90px;
 }
 .news-title p {
   color: #26a2ff;

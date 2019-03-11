@@ -26,3 +26,9 @@ npm run e2e
 npm test
 ```
 
+## 服务器端脚本
+
+~~~
+https://github.com/wmf1993/vue_api
+请在本地运行
+~~~
