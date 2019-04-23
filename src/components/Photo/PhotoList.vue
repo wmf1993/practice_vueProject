@@ -98,7 +98,7 @@ export default {
 
 <style scoped>
 .photo-header {
-  padding-top: 90px;
+  /*padding-top: 90px;*/
   overflow: hidden;
   height: 21px;
   margin-top: 4px;

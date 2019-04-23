@@ -14,6 +14,7 @@
       <mt-tab-item id="shopcart">
         <img @click="changeHash" slot="icon" src="./assets/img/shopcart.png">
         购物车
+        <mt-badge type="error" size="small">{{ num }}</mt-badge>
       </mt-tab-item>
       <mt-tab-item id="search">
         <img @click="changeHash" slot="icon" src="./assets/img/search.png">
@@ -23,11 +24,19 @@
   </div>
 </template>
 <script>
-
+import EventBus from './router/EventBus.js'
 export default {
+  created () {
+    // 子组件传递参数到父组件
+    EventBus.$on('addShopcart', data => {
+      console.log(this)
+      this.num += data
+    })
+  },
   data () {
     return {
-      selected: ''
+      selected: '',
+      num: 0
     }
   },
   methods: {

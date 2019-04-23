@@ -1,7 +1,9 @@
 <template>
-  <div class="cms-s-header">
-    <h1 @click="goBack">&nbsp;&lt;</h1>
-    <h1 class="page-title">{{ title }}</h1>
+  <div class="fixedTop">
+    <div class="cms-s-header">
+      <h1 @click="goBack">&nbsp;&lt;</h1>
+      <h1 class="page-title">{{ title }}</h1>
+    </div>
   </div>
 </template>
 
@@ -18,10 +20,12 @@ export default {
 </script>
 
 <style scoped>
+.fixedTop {
+  margin-top: 40px;
+  height: 50px;
+}
 .cms-s-header {
   position: fixed;
-  top: 16px;
-  margin-top: 24px;
   width: 100%;
   background-color: #fafafa;
   z-index: 999;

@@ -22,7 +22,7 @@
               销售价: <span>{{ goodsInfo.sell_price }}</span>
             </li>
             <li class="number-li">
-              购买数量: <span>-</span><span>1</span><span>+</span>
+              购买数量: <span @click="subtract">-</span><span>{{ pickNum }}</span><span @click="add">+</span>
             </li>
             <li>
               <mt-button type="primary">立即购买</mt-button>
@@ -30,7 +30,9 @@
             </li>
           </ul>
         </div>
-        <div class="ball" v-if="isExist"></div>
+        <transition name="myball" @after-enter="afterEnter">
+          <div class="ball" v-if="isExist"></div>
+        </transition>
         <div class="product-props">
           <ul>
             <li>商品参数</li>
@@ -42,7 +44,10 @@
         <div class="product-info">
           <ul>
             <li>
-              <mt-button type="primary" size="large" plain>图文介绍</mt-button>
+              <mt-button @click="photoInfo" type="primary" size="large" plain>图文介绍</mt-button>
+            </li>
+            <li>
+              <mt-button @click="goodsComment" type="danger" size="large" plain>商品评论</mt-button>
             </li>
           </ul>
         </div>
@@ -51,21 +56,54 @@
   </div>
 </template>
 <script>
+import EventBus from '@/router/EventBus.js'
 export default {
   data () {
     return {
       goodsInfo: [],
       imgs: [],
-      isExist: false
+      isExist: false,
+      pickNum: 1
     }
   },
   methods: {
+    add () {
+      if (this.pickNum >= this.goodsInfo.stock_quantity) return
+      this.pickNum++
+    },
+    subtract () {
+      if (this.pickNum <= 1) return
+      this.pickNum--
+    },
     insertBall () {
       this.isExist = true
+    },
+    afterEnter () {
+      this.isExist = false
+      // 通知App组件增加数量(子传父)
+      EventBus.$emit('addShopcart', this.pickNum)
+    },
+    photoInfo () {
+      this.$router.push({
+        name: 'photo.info',
+        query: {
+          id: this.$route.query.id
+        }
+      })
+    },
+    goodsComment () {
+      this.$router.push({
+        name: 'goods.comment',
+        query: {
+          id: this.$route.query.id
+        }
+      })
     }
   },
   created () {
     let id = this.$route.query.id
+    console.log(this.$route.query)
+    console.log(this.$route.params)
     this.$axios.get('/getthumimages/' + id)
       .then(res => {
         this.imgs = res.data.message
@@ -82,7 +120,7 @@ export default {
 
 <style scoped>
 .demo {
-  padding-top: 90px;
+  /*padding-top: 90px;*/
 }
 .mint-swipe {
   height: 300px;

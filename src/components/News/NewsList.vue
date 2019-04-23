@@ -38,9 +38,6 @@ export default {
 </script>
 
 <style scoped>
-.demo {
-  padding-top: 90px;
-}
 .demo ul {
   display: block;
   padding-left: 5px;
