@@ -10,7 +10,7 @@
           </div>
         </li>
         <li class="text-comment">
-          <textarea v-model="newComment"></textarea>
+          <textarea ref="textarea" v-model="newComment"></textarea>
         </li>
         <li>
           <mt-button type="primary" size="large" @click="sendComment">
@@ -47,7 +47,8 @@ export default {
     return {
       msgs: [], // 消息数据
       page: 1, // 组件内控制页码
-      newComment: '' // 新的消息
+      newComment: '', // 新的消息
+      textareaHeight: ''
     }
   },
   created () {
@@ -111,12 +112,17 @@ export default {
   margin-bottom: 5px;
 }
 .text-comment {
-  padding: 5px;
+  padding: 5px 0;
+  text-align: center;
 }
 .text-comment textarea {
   font-size: 18px;
   margin-bottom: 5px;
-  width: 100%;
+  width: 95%;
+  height: 84px;
+  border: 1px solid #000000;
+  resize: none;
+  overflow: hidden;
 }
 .comment-list li {
   border-bottom: 1px solid rgba(0,0,0,0.2);
